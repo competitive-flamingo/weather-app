@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoZen - Minimal Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>TodoZen</h1>
+            <p class="date-header">Today, <span class="current-date">August 25, 2023</span></p>
+        </header>
+
+        <nav class="side-panel">
+            <div class="panel-content">
+                <div class="projects-section">
+                    <div class="project-item home active">
+                        <span class="project-icon">🏠</span>
+                        <span>Home</span>
+                    </div>
+                    <div class="project-item today">
+                        <span class="project-icon">📅</span>
+                        <span>Today</span>
+                    </div>
+                    <!-- Projects will be dynmamically added here -->
+                </div>
+
+                <button class="new-project-btn">
+                    <span class="plus-icon">+</span>
+                    New Project
+                </button>
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <div class="tasks-header">
+                <h2><span class="project-name">All</span> Tasks</h2>
+                <button class="new-task-btn">+ New Task</button>
+            </div>
+
+            <div class="tasks-list">
+                <!-- Tasks will be dynamically added here -->
+            </div>
+        </main>
+    </div>
+    <dialog class="add-project">
+        <h2>Give your project a name</h2>
+        <form method="dialog" class="project-dialog-form">
+            <p>
+                <label for="title" class="required">Title:</label>
+                <input type="text" id="title" autofocus required>
+            </p>
+            <div class="buttons">
+                <button class="cancel" formmethod="dialog" formnovalidate>Cancel</button>
+                <button class="confirm">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="add-task">
+        <h2>Create a To-Do</h2>
+        <form method="dialog" class="task-dialog-form">
+            <p>
+                <label for="title" class="required">Title:</label>
+                <input type="text" id="title" autofocus required>
+            </p>
+            <p>
+                <label for="details">Details:</label>
+                <textarea name="details" id="details"></textarea>
+            </p>
+            <p>
+                <label for="date" class="required">Date:</label>
+                <input type="date" id="date" required>
+            </p>
+            <p class="priorities">
+                <label style="width: 100%">Priorities:</label>
+                <input type="radio" id="low" name="priority" value="low" checked>
+                <label for="low" class="low-priority">Low</label>
+
+                <input type="radio" id="medium" name="priority" value="medium">
+                <label for="medium" class="medium-priority">Medium</label>
+                
+                <input type="radio" id="high" name="priority" value="high">
+                <label for="high" class="high-priority">High</label>
+            </p>
+            <div class="buttons">
+                <button class="cancel" formmethod="dialog" formnovalidate>Cancel</button>
+                <button class="confirm">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+    <dialog class="show-details">
+        <h2>Details</h2>
+        <form method="dialog">
+            <label>Title:</label>
+            <p class="title"></p>
+            <label>Details:</label>
+            <p class="details"></p>
+            <label>Due date:</label>
+            <p class="date"></p>
+            <label>Priority:</label>
+            <p class="priority"></p>
+            <button class="cancel" formmethod="dialog" formnovalidate>Close</button>
+        </form>
+    </dialog>
+</body>
+</html>

@@ -1,0 +1,552 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/InterVariable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+
+/* styles.css */
+:root {
+  --primary-color: #4A90E2;
+  --secondary-color: rgba(223 225 228, 0.15);
+  --background-color: #F5F7FA;
+  --text-color: #2D3748;
+  --border-color: #E2E8F0;
+  --hover-color: #EDF2F7;
+  --low-priority: #48BB78;
+  --medium-priority: #ECC94B;
+  --high-priority: #F56565;
+  --low-priority-bg: rgba(72, 187, 120, 0.15);
+  --medium-priority-bg: rgba(236, 201, 75, 0.15);
+  --high-priority-bg: rgba(245, 101, 101, 0.15);
+}
+
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 150px 1fr;
+  min-height: 100vh;
+}
+
+.app-header {
+  grid-column: 1 / -1;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: white;
+}
+
+.date-header {
+  color: #718096;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.side-panel {
+  background-color: white;
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-section {
+  flex-grow: 1;
+  max-height: 30rem;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.project-item:hover {
+  background-color: var(--hover-color);
+}
+
+.project-item.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.project-icon {
+  margin-right: 0.75rem;
+}
+
+.new-project-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.content-area {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  height: 45rem;
+  overflow-y: auto;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.new-task-btn {
+  display: none;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.task-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+.checkbox-container input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: inline-block;
+}
+
+.task-content {
+  flex-grow: 1;
+}
+
+.task-title {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.task-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.priority-tag {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.priority-tag, .due-date {
+  pointer-events: none;
+  user-select: none;
+}
+
+.task-card:has(.checkbox-container input:checked) .task-content .task-title {
+  text-decoration: line-through;
+    opacity: 0.6;
+    color: var(--text-color-secondary);
+    transition: all 0.3s ease;
+}
+
+.task-card:has(.checkbox-container input:checked) .task-content .due-date,
+.task-card:has(.checkbox-container input:checked) .task-content .priority-tag {
+  opacity: 0.6;
+}
+
+.low-priority {
+  background-color: var(--low-priority-bg);
+  color: var(--low-priority);
+}
+
+.medium-priority {
+  background-color: var(--medium-priority-bg);
+  color: var(--medium-priority);
+}
+
+.high-priority {
+  background-color: var(--high-priority-bg);
+  color: var(--high-priority);
+}
+
+.taskActions-container {
+  position: relative;
+  border: none;
+  background: none;
+  font-size: 1.25rem;
+  color: #718096;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+
+.taskActions-container.active > .taskActions {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.taskActions {
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  top: -5rem;
+  left: -3.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.taskActions-icon {
+  user-select: none;
+}
+
+.taskActions > button {
+  width: 100%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.9rem;
+  background-color: white;
+  border: 1px solid var(--border-color); 
+  border-radius:unset;
+  text-align: left;
+}
+
+dialog {
+  padding: 1rem;
+  margin: auto;
+  outline: none;
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--background-color);
+}
+
+dialog::backdrop {
+  background-color: black;
+  opacity: 0.7;
+}
+
+.add-project {
+  height: 15rem;
+  width: 26rem;
+}
+
+.add-task{
+  height: 36rem;
+  width: 26rem;
+}
+
+.show-details {
+  height: 38rem;
+  width: 26rem;
+}
+
+
+form > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+dialog > h2 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+dialog > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+dialog input, dialog label {
+  display: block;
+  width: 100%;
+}
+
+dialog label {
+  position: relative;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+dialog label.required::after {
+  position: absolute;
+  content: "required";
+  right: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--high-priority);
+  background-color: var(--high-priority-bg);
+  padding: 0.2rem 0.5rem;
+}
+
+dialog input, dialog textarea {
+  outline: none;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+}
+
+button {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+dialog button {
+  margin-right: 1rem;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+}
+
+dialog .cancel {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+dialog .cancel:hover, .taskActions > button:hover {
+  background-color: #e5e7eb; /* Slightly darker gray */
+  border-color: #d1d5db;
+}
+
+dialog .cancel:active, .taskActions > button:active {
+  background-color: #d1d5db;
+}
+
+dialog .confirm {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+dialog .confirm:hover, .new-project-btn:hover, .new-task-btn:hover {
+  background-color: #357ABD; /* Darker shade of primary color */
+}
+
+dialog .confirm:active, .new-project-btn:active, .new-task-btn:hover {
+  background-color: #2A6096;
+}
+
+.priorities > input, .priorities > label {
+  display: inline-block;
+  width: auto;
+}
+
+textarea {
+  width: 100%;
+  height: 6rem;
+  resize: none;
+}
+
+.add-task input[type="radio"] {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.priorities > label:not(:first-child) {
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+input[type="radio"]#low:checked + label.low-priority {
+  background-color: rgba(72, 187, 120, 0.3);
+}
+
+input[type="radio"]#medium:checked + label.medium-priority {
+  background-color: rgba(236, 201, 75, 0.3);
+}
+
+input[type="radio"]#high:checked + label.high-priority {
+  background-color: rgba(245, 101, 101, 0.3);
+}
+
+.show-details p {
+  padding: 0.5rem;
+  width: 100%;
+  height: 2.6rem;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.show-details p.details {
+  height: 6rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #718096;
+}
+
+.empty-state-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.delete-project-btn {
+  background-color: var(--high-priority-bg);
+  color: var(--high-priority);
+  border: 1px solid var(--high-priority);
+}
+
+.delete-project-btn:hover {
+  background-color: var(--high-priority);
+  color: white;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      grid-template-columns: 1fr;
+  }
+
+  .side-panel {
+      display: none;
+  }
+}
