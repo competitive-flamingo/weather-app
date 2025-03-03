@@ -4,17 +4,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-    ],
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
-  ],
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.css$/i,
+  //       use: [MiniCssExtractPlugin.loader, 'css-loader'],
+  //     },
+  //   ],
+  // },
+  // plugins: [
+  //   new MiniCssExtractPlugin({
+  //     filename: 'weatherData.css',
+  //   }),
+  //   new MiniCssExtractPlugin({
+  //     filename: 'index.css',
+  //   }),
+  // ],
 });

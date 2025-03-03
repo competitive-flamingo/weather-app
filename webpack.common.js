@@ -11,7 +11,7 @@ module.exports = {
     filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: '/weather-app/',
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
