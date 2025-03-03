@@ -28,10 +28,6 @@ const temperatureUnitMap = {
     "fahrenheit": c => Math.round(c * (9 / 5) + 32),
     "celsius": f =>  Math.round((f - 32) * 5 / 9),
 }
-// let currentTemperatureUnit = null;
-
-console.log(weatherData);
-
 
 async function getWeatherData(city) {
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=${API_KEY}`)
@@ -44,7 +40,6 @@ unitToggle.addEventListener("change", renderTemperatureUnitChanges);
 function renderTemperatureUnitChanges() {
     const tempUnit = unitToggle.value;
     localStorage.setItem("tempUnit", tempUnit);
-    console.log(tempUnit);
     cityTemperature.textContent = `${temperatureUnitMap[tempUnit](+cityTemperature.textContent.slice(0, -1))}°`;
     for(let i = 0 ;  i < todayForecastCards.length ; i++) {
         const currentCardTemp = todayForecastCards[i].children[2].textContent
@@ -79,7 +74,6 @@ function renderRoundedTemperatures() {
 async function renderWeatherData(city) {
     try {
         weatherData = await getWeatherData(city);
-        console.log(weatherData);
         dataRetrievalMessage.textContent = "Successful Data Retrieval";
         renderCurrentForecast();
         renderTodaysForecast();
@@ -171,7 +165,6 @@ function renderDaysForecast() {
     Array.from(daysForecastCards).forEach((card, index) => {
         Array.from(card.children).forEach((child) => {
             const moduledIndex = (index + todayIndex) % 7;
-            console.log(moduledIndex);
             const dayName = (moduledIndex === todayIndex) ? "Today" : daysOfWeek[moduledIndex];
             switch(child.className) {
                 case "dayName":
