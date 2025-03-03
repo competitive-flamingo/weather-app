@@ -5,16 +5,25 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     app: './src/script.js',
+    weatherData: './src/weatherData.js'
   },
   output: {
-    filename: "main.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      title: 'Production',
+      filename: "index.html",
+      title: 'Home',
+      chunks: ['app'],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/weatherData.html",
+      filename: "weatherData.html",
+      title: 'Weather Data',
+      chunks: ['weatherData'],
     }),
   ],
   module: {
