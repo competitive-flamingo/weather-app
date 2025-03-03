@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data</title>
+</head>
+<body>
+    <form class="weatherForm">
+        <input type="text" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+    <div class="data-retrieval-message">Successful Data Retrieval</div>
+    <div class="currentForecast">
+        <div class="city-related">
+            <div class="city-header">
+                <h1 class="city-name">
+                    Madrid
+                </h1>
+                <p class="description"></p>
+            </div>
+            <h1 class="city-temperature">31°</h1>
+        </div>
+        <div class="city-condition-icon">
+            <img src="./images/showers-day.svg" alt="">
+        </div>
+    </div>
+    <div class="controls">
+        <p class="controls-header">CONTROLS</p>
+        <div class="controls-container">
+            <select id="unitToggle">
+                <option value="fahrenheit" selected>°F</option>
+                <option value="celsius">°C</option>
+            </select>
+            <button id="refreshButton">Refresh</button>
+        </div>
+    </div>
+    <div class="todayForecast">
+        <p class="todayForecast-header">TODAY'S FORECAST</p>
+        <div class="todayForecast-container">
+            <div class="todayForecast-card">
+                <p class="time">6:00 AM</p>
+                <div class="icon-container"><img src="./images/fog.svg" alt=""></div>
+                <p class="temp">25°</p>
+            </div>
+            <div class="todayForecast-card">
+                <p class="time">6:00 AM</p>
+                <div class="icon-container"><img src="./images/rain-snow.svg" alt=""></div>
+                <p class="temp">25°</p>
+            </div>
+            <div class="todayForecast-card">
+                <p class="time">6:00 AM</p>
+                <div class="icon-container"><img src="./images/rain-snow.svg" alt=""></div>
+                <p class="temp">25°</p>
+            </div>
+            <div class="todayForecast-card">
+                <p class="time">6:00 AM</p>
+                <div class="icon-container"><img src="./images/rain-snow.svg" alt=""></div>
+                <p class="temp">25°</p>
+            </div>
+            <div class="todayForecast-card">
+                <p class="time">6:00 AM</p>
+                <div class="icon-container"><img src="./images/rain-snow.svg" alt=""></div>
+                <p class="temp">25°</p>
+            </div>
+            <div class="todayForecast-card">
+                <p class="time">6:00 AM</p>
+                <div class="icon-container"><img src="./images/rain-snow.svg" alt=""></div>
+                <p class="temp">25°</p>
+            </div>
+        </div>
+    </div>
+    <div class="airConditions">
+        <p class="airConditions-header">AIR CONDITIONS</p>
+        <div class="airConditions-container">
+            <div class="airCondition-card">
+                <div class="airCondition-header">
+                    <img src="./images/real-feel.svg" alt="">
+                    <p class="header-text">Real Feel</p>
+                </div>
+                <p class="real-feel-val val">30°</p>
+            </div>
+            <div class="airCondition-card">
+                <div class="airCondition-header">
+                    <img src="./images/wind.svg" alt="">
+                    <p class="header-text">wind</p>
+                </div>
+                <p class="wind-val val"></p>
+            </div>
+            <div class="airCondition-card">
+                <div class="airCondition-header">
+                    <img src="./images/humidity.svg" alt="">
+                    <p class="header-text">Humidity</p>
+                </div>
+                <p class="humidity-val val"></p>
+            </div>
+            <div class="airCondition-card">
+                <div class="airCondition-header">
+                    <img src="./images/uv-index.svg" alt="">
+                    <p class="header-text">UV Index</p>
+                </div>
+                <p class="uv-index-val val"></p>
+            </div>
+        </div>
+    </div>
+    <div class="daysForecast">
+        <p class="daysForecast-header">7-DAY FORECAST</p>
+        <div class="daysForecast-container">
+            <div class="day-card">
+                <p class="dayName">Today</p>
+                <div class="dayCondition">
+                    <div class="conditionIcon"><img src="./images/clear-day.svg" alt=""></div>
+                    <p class="conditionState">Cloudly</p>
+                </div>
+                <div class="maxminTemp"><span class="max">36</span><span class="min">/22</span></div>
+            </div>
+            <div class="day-card">
+                <p class="dayName">Today</p>
+                <div class="dayCondition">
+                    <div class="conditionIcon"><img src="./images/clear-day.svg" alt=""></div>
+                    <p class="conditionState">Cloudly</p>
+                </div>
+                <div class="maxminTemp"><span class="max">36</span><span class="min">/22</span></div>
+            </div>
+            <div class="day-card">
+                <p class="dayName">Today</p>
+                <div class="dayCondition">
+                    <div class="conditionIcon"><img src="./images/clear-day.svg" alt=""></div>
+                    <p class="conditionState">Cloudly</p>
+                </div>
+                <div class="maxminTemp"><span class="max">36</span><span class="min">/22</span></div>
+            </div>
+            <div class="day-card">
+                <p class="dayName">Today</p>
+                <div class="dayCondition">
+                    <div class="conditionIcon"><img src="./images/clear-day.svg" alt=""></div>
+                    <p class="conditionState">Cloudly</p>
+                </div>
+                <div class="maxminTemp"><span class="max">36</span><span class="min">/22</span></div>
+            </div>
+            <div class="day-card">
+                <p class="dayName">Today</p>
+                <div class="dayCondition">
+                    <div class="conditionIcon"><img src="./images/clear-day.svg" alt=""></div>
+                    <p class="conditionState">Cloudly</p>
+                </div>
+                <div class="maxminTemp"><span class="max">36</span><span class="min">/22</span></div>
+            </div>
+            <div class="day-card">
+                <p class="dayName">Today</p>
+                <div class="dayCondition">
+                    <div class="conditionIcon"><img src="./images/clear-day.svg" alt=""></div>
+                    <p class="conditionState">Cloudly</p>
+                </div>
+                <div class="maxminTemp"><span class="max">36</span><span class="min">/22</span></div>
+            </div>
+            <div class="day-card">
+                <p class="dayName">Today</p>
+                <div class="dayCondition">
+                    <div class="conditionIcon"><img src="./images/clear-day.svg" alt=""></div>
+                    <p class="conditionState">Cloudly</p>
+                </div>
+                <div class="maxminTemp"><span class="max">36</span><span class="min">/22</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
