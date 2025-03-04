@@ -29,8 +29,6 @@ const temperatureUnitMap = {
     "celsius": f =>  Math.round((f - 32) * 5 / 9),
 }
 
-console.log(weatherData);
-
 async function getWeatherData(city) {
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=${API_KEY}`)
     if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
@@ -84,7 +82,6 @@ async function renderWeatherData(city) {
         renderDaysForecast();
         renderRoundedTemperatures();
         localStorage.setItem("weatherData", JSON.stringify(weatherData));
-        console.log(weatherData);
     } catch(error) {
         dataRetrievalMessage.textContent = "Invalid city name or network error";
         dataRetrievalMessage.classList.add("failure");
