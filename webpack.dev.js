@@ -7,5 +7,9 @@ module.exports = merge(common, {
   devServer: {
     static: './dist', // Serve files from the dist folder
     watchFiles: ["./src/index.html", "./src/weatherData.html"], // Watch HTML files for changes
+    
+  },
+  output: {
+    publicPath: '/',
   },
 });
