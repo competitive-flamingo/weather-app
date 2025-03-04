@@ -405,7 +405,7 @@ body > * {
     gap: 0.5rem; 
   }
 
-  .weatherForm input[type="text"] {
+  .weatherForm input {
     border-radius: 10px; 
   }
 
