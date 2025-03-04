@@ -29,6 +29,8 @@ const temperatureUnitMap = {
     "celsius": f =>  Math.round((f - 32) * 5 / 9),
 }
 
+console.log(weatherData);
+
 async function getWeatherData(city) {
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=${API_KEY}`)
     if(!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
@@ -74,6 +76,7 @@ function renderRoundedTemperatures() {
 async function renderWeatherData(city) {
     try {
         weatherData = await getWeatherData(city);
+        dataRetrievalMessage.classList.remove("failure");
         dataRetrievalMessage.textContent = "Successful Data Retrieval";
         renderCurrentForecast();
         renderTodaysForecast();
@@ -81,9 +84,10 @@ async function renderWeatherData(city) {
         renderDaysForecast();
         renderRoundedTemperatures();
         localStorage.setItem("weatherData", JSON.stringify(weatherData));
+        console.log(weatherData);
     } catch(error) {
         dataRetrievalMessage.textContent = "Invalid city name or network error";
-        dataRetrievalMessage.classList.toggle("failure");
+        dataRetrievalMessage.classList.add("failure");
         console.error(error.message);
     }
 }
@@ -92,25 +96,10 @@ weatherForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const city = cityInput.value;
     localStorage.setItem("cityName", city);
-    // try {
-    //     weatherData = await getWeatherData(city);
-    //     dataRetrievalMessage.textContent = "Successful Data Retrieval";
-    //     renderCurrentForecast();
-    //     renderTodaysForecast();
-    //     renderAirCondition();
-    //     renderDaysForecast();
-    //     renderRoundedTemperatures();
-    //     localStorage.setItem("weatherData", JSON.stringify(weatherData));
-    // } catch(error) {
-    //     dataRetrievalMessage.textContent = "Invalid city name or network error";
-    //     dataRetrievalMessage.classList.toggle("failure");
-    //     console.error(error.message);
-    // }
     weatherFormButton.innerHTML = "";
     weatherFormButton.classList.add("loading");
     weatherFormButton.append(loadingIconImage);
     await renderWeatherData(city);
-    // weatherFormButton.innerHTML = "";
     weatherFormButton.textContent = "Get Weather";
     weatherForm.classList.remove("loading");
     weatherForm.reset();
@@ -122,7 +111,6 @@ refreshButton.addEventListener("click", async (event) => {
     refreshButton.innerHTML = "";
     refreshButton.appendChild(loadingIconImage);
     await renderWeatherData(city);
-    // refreshButton.innerHTML = "";
     refreshButton.textContent = "Refresh";
     refreshButton.classList.remove("loading");
 });
@@ -165,18 +153,18 @@ function renderDaysForecast() {
     Array.from(daysForecastCards).forEach((card, index) => {
         Array.from(card.children).forEach((child) => {
             const moduledIndex = (index + todayIndex) % 7;
-            const dayName = (moduledIndex === todayIndex) ? "Today" : daysOfWeek[moduledIndex];
+            const dayName = (index === 0) ? "Today" : daysOfWeek[moduledIndex];
             switch(child.className) {
                 case "dayName":
                     child.textContent = dayName;
                     break;
                 case "dayCondition":
-                    child.children[0].children[0].src = imageMap[weatherData.days[moduledIndex].icon];
-                    child.children[1].textContent = weatherData.days[moduledIndex].conditions;
+                    child.children[0].children[0].src = imageMap[weatherData.days[index].icon];
+                    child.children[1].textContent = weatherData.days[index].conditions;
                     break;
                 case "maxminTemp":
-                    child.children[0].textContent = unitToggle.value === 'celsius' ? temperatureUnitMap['celsius'](weatherData.days[moduledIndex].tempmax) : weatherData.days[moduledIndex].tempmax;
-                    child.children[1].textContent = `/${unitToggle.value === 'celsius' ? temperatureUnitMap['celsius'](weatherData.days[moduledIndex].tempmin) : weatherData.days[moduledIndex].tempmin}`;
+                    child.children[0].textContent = unitToggle.value === 'celsius' ? temperatureUnitMap['celsius'](weatherData.days[index].tempmax) : weatherData.days[index].tempmax;
+                    child.children[1].textContent = `/${unitToggle.value === 'celsius' ? temperatureUnitMap['celsius'](weatherData.days[index].tempmin) : weatherData.days[index].tempmin}`;
                     break;
             }
         })

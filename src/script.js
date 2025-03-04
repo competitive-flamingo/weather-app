@@ -36,5 +36,6 @@ weatherForm.addEventListener("submit", async (event) => {
     } finally {
         weatherFormButton.classList.remove("loading");
         weatherFormButton.textContent = "Get Weather";
+        weatherForm.reset();
     }
 })
