@@ -135,7 +135,7 @@ body > * {
 
 
 
-.weatherForm input[type=text] {
+.weatherForm input {
   outline: none;
   border: none;
   width: 100%;
