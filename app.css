@@ -1,0 +1,235 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* styles */
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(/weather-app/709727e405db435e05b1.woff2) format('woff2'),
+      url(/weather-app/e734705147dd46ee672b.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  --body-background-color: #0b131e;
+  --primary-text-color: #e7e5e6;
+  --secondary-text-color: #bfc6d2;
+  --secondary-background-color: #202b3b;
+  --button-background-color: #1a5bbf;
+  --hovered-button-background-color: #0195ff;
+  --failed-data-retrieval-color: #F44336;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background: var(--body-background-color);
+  background-size: cover;
+  color: var(--primary-text-color);
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+::placeholder {
+  color: var(--secondary-text-color);
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+}
+
+.logo-header {
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo-header img {
+  height: 5rem;
+}
+
+.container h1 {
+  font-size: 2.5rem;
+  /* margin-bottom: 4rem; */
+  text-align: center;
+}
+
+.container .weatherForm {
+  display: flex;
+  justify-content: center;
+}
+
+.weatherForm input {
+  outline: none;
+  border: none;
+  width: 70%;
+  padding: 1rem 1.5rem;
+  border-radius: 10px 0 0 10px;
+  background: var(--secondary-background-color);
+  color: var(--primary-text-color);
+}
+
+.weatherForm button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0 10px 10px 0;
+  background: var(--button-background-color);
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.loading {
+  display: grid;
+  place-content: center;
+  cursor: not-allowed;
+}
+
+.loading-icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+.weatherForm button:hover {
+  background: var(--hovered-button-background-color);
+}
+
+.error-message {
+  max-width: 500px;
+  width: 100%;
+  grid-area: dataRetrievalMessage;
+  padding: 1rem;
+  display: none;
+  place-content: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  background-color: var(--failed-data-retrieval-color);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  align-self: stretch;
+  padding: 1rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  display: grid;
+  place-content: center;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer img {
+  width: 40px;
+  height: 40px;
+  transition: filter 0.3s ease;
+}
+
+footer img:hover {
+  filter: brightness(1.5);
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  body{ 
+    padding: 1rem;
+  }
+  .weatherForm {
+    flex-direction: column;
+    gap: 0.5rem; 
+  }
+
+  .weatherForm input {
+    border-radius: 10px; 
+    width: 100%;
+  }
+
+  .weatherForm button {
+    border-radius: 10px; 
+    width: 100%; 
+  }
+
+  .error-message {
+    font-size: 0.8rem;
+  }
+}
