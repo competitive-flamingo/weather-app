@@ -3,6 +3,7 @@ import imageMap from "./imageMap"
 import loadingIcon from "./images/loading-icon.svg"
 import {format, parse} from "date-fns"
 let weatherData = JSON.parse(localStorage.getItem("weatherData"));
+let city = localStorage.getItem("cityName");
 const API_KEY = "78YSBZTU7WRJJJMAFNB27N3DN";
 const weatherForm = document.querySelector(".weatherForm");
 const weatherFormButton = document.querySelector(".weatherForm button");
@@ -91,7 +92,7 @@ async function renderWeatherData(city) {
 
 weatherForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const city = cityInput.value;
+    city = cityInput.value;
     localStorage.setItem("cityName", city);
     weatherFormButton.innerHTML = "";
     weatherFormButton.classList.add("loading");

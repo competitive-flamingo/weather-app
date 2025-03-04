@@ -19,6 +19,7 @@ async function getWeatherData(city) {
 weatherForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const city = cityInput.value;
+    localStorage.setItem("cityName", city);
     weatherFormButton.innerHTML = "";
     weatherFormButton.classList.add("loading");
     weatherFormButton.append(loadingIconImage);
