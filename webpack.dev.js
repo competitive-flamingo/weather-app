@@ -2,10 +2,10 @@ const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: 'development', // Development mode
+  devtool: 'inline-source-map', // Source maps for debugging
   devServer: {
-    static: './dist',
-    watchFiles: ["./src/index.html", "./src/weatherData.html"],
+    static: './dist', // Serve files from the dist folder
+    watchFiles: ["./src/index.html", "./src/weatherData.html"], // Watch HTML files for changes
   },
 });
